@@ -31,7 +31,7 @@ const Navbar = () => {
             <BackgroundEffect />
 
             <div className="fixed inset-0 z-50 flex">
-              <div className="w-2/3 h-screen flex items-center justify-center p-8">
+              <div className="w-full md:w-2/3 h-screen flex items-center justify-center p-8">
                 <nav className="flex flex-col gap-8">
                   {navItems.map((item, index) => (
                     <div key={item.name} className="relative">

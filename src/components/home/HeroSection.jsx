@@ -12,6 +12,14 @@ const BackgroundText = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scaled = () => {
+    if (window.innerWidth < 500) {
+      return 1.6;
+    } else {
+      return 1;
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -200 }}
@@ -21,7 +29,11 @@ const BackgroundText = () => {
       <motion.h1
         key={words[currentWord]}
         initial={{ opacity: 0, scale: 0.5, y: -400 }}
-        animate={{ opacity: 1, scale: 1, y: -100 }}
+        animate={{
+          opacity: 1,
+          scale: scaled(),
+          y: -100,
+        }}
         exit={{ opacity: 0, scale: 0.2, y: -400 }}
         transition={{ duration: 1.5 }}
         className="text-[15vw] md:text-[20vw] font-bold whitespace-nowrap tracking-tighter"
@@ -109,9 +121,9 @@ const HeroContent = () => {
             {/* Stats Section */}
             <div className="grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
-                { value: "5+", label: "Years" },
-                { value: "50+", label: "Projects" },
-                { value: "100%", label: "Satisfaction" },
+                { value: "1+", label: "Years" },
+                { value: "10+", label: "Projects" },
+                { value: "100%", label: "Creativity" },
               ].map((stat, index) => (
                 <motion.div
                   key={index}
