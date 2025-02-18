@@ -35,3 +35,30 @@ html {
   backface-visibility: hidden;
   perspective: 1000px;
 }
+.cursor {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.cursor-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
