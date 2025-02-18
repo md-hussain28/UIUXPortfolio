@@ -4,7 +4,7 @@ const MenuButton = ({ isOpen, toggleOpen }) => {
   return (
     <motion.button
       onClick={toggleOpen}
-      className="fixed top-8 right-8 z-50 group"
+      className="fixed top-8 right-8 z-100 group"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
