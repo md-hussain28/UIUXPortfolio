@@ -5,6 +5,7 @@ import MenuItem from "./MenuItem";
 import MenuDescription from "./MenuDescription";
 import SideInfo from "./SideInfo";
 import BackgroundEffect from "./BackgroundEffect";
+import Logo from "./Logo";
 
 const navItems = [
   { name: "HOME", description: "Back to start" },
@@ -24,6 +25,7 @@ const Navbar = () => {
         toggleOpen={() => setIsOpen(!isOpen)}
         toggleClose={() => setIsOpen(isOpen)}
       />
+      <Logo />
 
       <AnimatePresence>
         {isOpen && (
