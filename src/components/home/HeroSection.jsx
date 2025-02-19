@@ -64,6 +64,7 @@ const HeroContent = () => {
   const { scrollY } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
+    layoutEffect: false,
   });
 
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);

@@ -62,3 +62,10 @@ html {
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .motion-reduce {
+    animation: none !important;
+    transform: none !important;
+  }
+}
