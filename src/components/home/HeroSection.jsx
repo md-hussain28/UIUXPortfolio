@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const BackgroundText = () => {
-  const words = ["ZEBA", "AFREEN", "UI / UX ", "DESIGNER", "DEVELOPER"];
+  const words = ["UI / UX ", "DESIGN", "DEVELOP"];
   const [currentWord, setCurrentWord] = useState(0);
 
   useEffect(() => {
@@ -13,10 +13,12 @@ const BackgroundText = () => {
   }, []);
 
   const scaled = () => {
-    if (window.innerWidth < 500) {
-      return 1.6;
+    const l = 6.0 / words[currentWord].length;
+
+    if (window.innerWidth < 560) {
+      return 1.8 * l;
     } else {
-      return 1;
+      return 1.2 * l;
     }
   };
 
@@ -105,7 +107,7 @@ const HeroContent = () => {
               <h1 className="text-4xl md:text-7xl font-bold text-white">
                 Crafting
                 <span
-                  className="block text-transparent bg-clip-text
+                  className="block pb-2 text-transparent bg-clip-text
                              bg-gradient-to-r from-purple-400 to-pink-400"
                 >
                   Digital Experiences

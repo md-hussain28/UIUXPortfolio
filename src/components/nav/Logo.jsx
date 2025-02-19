@@ -101,18 +101,20 @@ const Logo = () => {
           animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
         >
           <div className="flex space-x-1">
-            {["Z", "E", "B", "A"].map((letter, index) => (
-              <motion.span
-                key={index}
-                className="text-white text-sm font-medium"
-                variants={letterVariants}
-                initial="initial"
-                animate={isHovered ? "hover" : "initial"}
-                transition={{ delay: index * 0.1 }}
-              >
-                {letter}
-              </motion.span>
-            ))}
+            {["Z", "E", "B", "A", " ", "A", "F", "R", "E", "E", "N"].map(
+              (letter, index) => (
+                <motion.span
+                  key={index}
+                  className="text-white text-sm font-sans"
+                  variants={letterVariants}
+                  initial="initial"
+                  animate={isHovered ? "hover" : "initial"}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  {letter}
+                </motion.span>
+              )
+            )}
           </div>
         </motion.div>
       </div>
