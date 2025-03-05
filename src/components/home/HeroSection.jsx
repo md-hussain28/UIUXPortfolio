@@ -40,7 +40,7 @@ const BackgroundText = () => {
         transition={{ duration: 1.5 }}
         className="text-[15vw] md:text-[20vw] font-bold whitespace-nowrap tracking-tighter"
         style={{
-          WebkitTextStroke: "2px rgba(255,255,255,0.1)",
+          WebkitTextStroke: "4px rgba(255,255,255,0.1)",
           color: "rgba(255,255,255,0.03)",
           textShadow: "0 0 40px rgba(255,255,255,0.1)",
           letterSpacing: "-0.05em",

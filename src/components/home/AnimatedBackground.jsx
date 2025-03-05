@@ -209,7 +209,7 @@ const AnimatedBackground = memo(() => {
         {shapes.map(({ id, size, left, top, duration, delay }) => (
           <motion.div
             key={id}
-            className="absolute rounded-full opacity-[0.07]"
+            className="absolute rounded-full opacity-[0.14]"
             style={{
               width: size,
               height: size,
@@ -217,7 +217,7 @@ const AnimatedBackground = memo(() => {
               top,
               background:
                 "radial-gradient(circle at center, purple, transparent)",
-              filter: "blur(40px)",
+              filter: "blur(400px)",
             }}
             animate={{
               y: [0, -30, 0],
