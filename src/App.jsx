@@ -8,6 +8,8 @@ import ProjDeep from "./pages/ProjDeep";
 import ProjChat from "./pages/ProjChat";
 import ProjClaude from "./pages/ProjClaude";
 import Contact from "./pages/Contact";
+import FooterSection from "./pages/Footer";
+import ThematicFooter from "./pages/FooterDeep";
 function App() {
   return (
     <>
@@ -16,6 +18,8 @@ function App() {
       <About />
       <ProjGrok />
       <Contact />
+
+      <ThematicFooter />
     </>
   );
 }

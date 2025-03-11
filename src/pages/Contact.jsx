@@ -419,8 +419,82 @@
 
 // export default ContactSection;
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+
+const CosmicLink = ({ label, url, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const linkRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: linkRef,
+    offset: ["start end", "end end"],
+  });
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [50 * (index % 2 === 0 ? 1 : -1), 0]
+  );
+  const springY = useSpring(y, { stiffness: 100, damping: 20 });
+
+  return (
+    <motion.div
+      ref={linkRef}
+      style={{ y: springY }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="relative"
+    >
+      <motion.a
+        href={url}
+        className="text-white/70 font-mono text-sm relative z-10 px-4 py-2 bg-white/5
+                    backdrop-blur-md rounded-full border border-white/20"
+        animate={{ scale: isHovered ? 1.1 : 1 }}
+        whileHover={{ color: "#EC4899" }}
+        transition={{ duration: 0.3 }}
+      >
+        {label}
+        {/* Orbiting ring */}
+        <motion.div
+          className="absolute inset-0 border-2 border-purple-400/50 rounded-full"
+          animate={{
+            rotate: isHovered ? 360 : 0,
+            scale: isHovered ? 1.5 : 1,
+            opacity: isHovered ? 0.8 : 0.3,
+          }}
+          transition={{
+            duration: 1,
+            repeat: isHovered ? Infinity : 0,
+            ease: "linear",
+          }}
+        />
+      </motion.a>
+      {/* Cosmic burst */}
+      {isHovered &&
+        [...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-pink-400 rounded-full"
+            initial={{ x: 0, y: 0 }}
+            animate={{
+              x: Math.cos(i * 2) * 30,
+              y: Math.sin(i * 2) * 30,
+              opacity: 0,
+            }}
+            transition={{ duration: 0.5 + i * 0.1, ease: "easeOut" }}
+          />
+        ))}
+    </motion.div>
+  );
+};
+
+const links = [
+  { label: "LinkedIn", url: "#" },
+  { label: "Dribbble", url: "#" },
+  { label: "Behance", url: "#" },
+  { label: "GitHub", url: "#" },
+];
 
 const ContactSection = () => {
   const containerRef = useRef(null);
@@ -565,28 +639,20 @@ const ContactSection = () => {
         </motion.div>
 
         {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 flex justify-center space-x-6"
-        >
-          {[
-            { name: "LinkedIn", link: "https://www.linkedin.com", icon: "👔" },
-            { name: "GitHub", link: "https://www.github.com", icon: "🐙" },
-            { name: "Figma", link: "https://www.figma.com", icon: "🎨" },
-            { name: "Email", link: "mailto:example@example.com", icon: "✉️" },
-          ].map((social, index) => (
-            <a
-              key={index}
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-white/70 hover:text-white transition-colors duration-300"
-            >
-              {social.icon}
-            </a>
-          ))}
+        <motion.div className="relative z-10 container mx-auto p-10 px-4">
+          <div className="flex flex-col items-center gap-12">
+            {/* Cosmic Links */}
+            <div className="flex flex-wrap justify-center gap-6">
+              {links.map((link, index) => (
+                <CosmicLink
+                  key={index}
+                  label={link.label}
+                  url={link.url}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
 

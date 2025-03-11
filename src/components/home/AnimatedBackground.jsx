@@ -39,6 +39,31 @@ const AnimatedBackground = memo(() => {
 
   return (
     <div className="fixed inset-0 z-10 overflow-hidden bg-gradient-to-br from-black via-purple-900/30 to-black">
+      {/* Shooting Stars */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{
+              opacity: 0,
+              x: Math.random() * 1000,
+              y: Math.random() * 1000,
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              x: [Math.random() * 1000, Math.random() * -1000],
+              y: [Math.random() * 1000, Math.random() * -1000],
+            }}
+            transition={{
+              duration: Math.random() * 5 + 5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: Math.random() * 2,
+            }}
+            className="absolute w-1 h-1 bg-white rounded-full"
+          />
+        ))}
+      </div>
       <div
         className="absolute z-50 inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"
         style={{ mixBlendMode: "overlay" }}
