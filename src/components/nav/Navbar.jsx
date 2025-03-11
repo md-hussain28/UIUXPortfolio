@@ -9,8 +9,8 @@ import Logo from "./Logo";
 
 const navItems = [
   { name: "HOME", description: "Back to start" },
-  { name: "WORK", description: "View my projects" },
   { name: "ABOUT", description: "Get to know me" },
+  { name: "WORK", description: "View my projects" },
   { name: "CONTACT", description: "Let's talk" },
 ];
 
