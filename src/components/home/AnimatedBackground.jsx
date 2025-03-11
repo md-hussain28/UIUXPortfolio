@@ -203,7 +203,7 @@ const AnimatedBackground = memo(() => {
   }, [handleMouseMove]);
 
   return (
-    <div className="fixed inset-0 z-10 overflow-hidden bg-gradient-to-br from-black via-purple-900/10 to-black">
+    <div className="fixed inset-0 z-10 overflow-hidden bg-gradient-to-br from-black via-purple-900/30 to-black">
       {/* Animated shapes with reduced complexity */}
       <div className="absolute inset-0">
         {shapes.map(({ id, size, left, top, duration, delay }) => (

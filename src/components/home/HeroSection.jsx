@@ -71,7 +71,7 @@ const HeroContent = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -200]);
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-[#0A0A0A]">
+    <div className="relative min-h-screen w-full overflow-hidden bg-[#0A0A0A]/0">
       {/* Background Elements */}
       <BackgroundText />
 
